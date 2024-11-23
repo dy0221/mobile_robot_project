@@ -24,6 +24,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            #fake_state_publisher 치면 urdfpkg에 fake_state_publihser파일 속 main file 실행
+            'fake_state_publisher = urdf_pkg.fake_state_publisher:main',
+            'state_publisher = urdf_pkg.state_publisher:main',
         ],
     },
 )

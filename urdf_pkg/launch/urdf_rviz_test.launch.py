@@ -39,12 +39,26 @@ def generate_launch_description():
                 parameters=[params],
             ),
             #joint state publisher gui node 실행 << 이게 있어야 움직이는 link가 rviz에 잡힘
+            #Node(
+            #    package="joint_state_publisher_gui",
+            #    executable="joint_state_publisher_gui",
+            #    output="screen",
+            #),
+            #fake_state_publisher
+            #Node(
+            #    package='urdf_pkg',
+            #    executable='fake_state_publisher',
+            #    output='screen',
+            #    parameters=[],
+            #),
+            #fake_state_publisher
             Node(
-                package="joint_state_publisher_gui",
-                executable="joint_state_publisher_gui",
-                output="screen",
+                package='urdf_pkg',
+                executable='state_publisher',
+                output='screen',
+                parameters=[],
             ),
-            #rviz2
+            #rviz2 실행
             Node(
                 package='rviz2',
                 namespace='',
