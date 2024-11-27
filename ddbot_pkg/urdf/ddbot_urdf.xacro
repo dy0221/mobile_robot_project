@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="ddbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:arg name="use_ros2_control" default="true"/>
+
+  <xacro:include filename="ddbot_description.xacro" />
+
+  <xacro:if value="$(arg use_ros2_control)">
+      <xacro:include filename="ddbot_control.xacro" />
+  </xacro:if>
+  <xacro:unless value="$(arg use_ros2_control)">
+      <xacro:include filename="ddbot_gazebo.xacro" />
+  </xacro:unless>
+
+</robot>

@@ -15,7 +15,7 @@ private:
     void publish_message()
     {
         auto message = robot_msgs::msg::MotorRpm();
-        message.left_motor_rpm = 20; //left_rpm
+        message.left_motor_rpm = 7; //left_rpm
         message.right_motor_rpm = 20; //right_rpm
         publisher_->publish(message);
         RCLCPP_INFO(this->get_logger(), "Publishing: Left RPM: %d, Right RPM: %d", message.left_motor_rpm, message.right_motor_rpm);
