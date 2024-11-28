@@ -47,6 +47,6 @@
           <frame_name>camera_link_optical</frame_name>
       </plugin>
     </sensor>
-    </gazebo>
+  </gazebo>
 
 </robot>
