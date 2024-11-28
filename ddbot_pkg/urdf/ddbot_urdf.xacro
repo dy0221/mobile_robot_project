@@ -4,6 +4,10 @@
   <xacro:arg name="use_ros2_control" default="true"/>
 
   <xacro:include filename="ddbot_description.xacro" />
+  
+  <xacro:include filename="ddbot_lidar.xacro" />
+
+  <xacro:include filename="ddbot_camera.xacro" />
 
   <xacro:if value="$(arg use_ros2_control)">
       <xacro:include filename="ddbot_control.xacro" />

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot name="ddbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- CAMERA LINK -->
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.025 0.023 0.009"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.025 0.023 0.009"/>
+      </geometry>
+    </collision>
+
+    <xacro:box_inertia m="0.1" w="0.025" d="0.023" h="0.009"/>
+  </link>  
+
+  <joint name="camera_joint" type="fixed">
+      <parent link="body_link"/>
+      <child link="camera_link"/>
+      <origin xyz="0.12 0 0"/>
+  </joint>
+
+  <gazebo reference="camera_link">
+    <material>Gazebo/Blue</material>
+    <sensor name="camera" type="camera">
+      <pose> 0 0 0 0 0 0 </pose>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <camera>
+        <horizontal_fov>1.089</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>8.0</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <frame_name>camera_link_optical</frame_name>
+      </plugin>
+    </sensor>
+    </gazebo>
+
+</robot>

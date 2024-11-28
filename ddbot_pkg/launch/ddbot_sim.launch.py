@@ -21,6 +21,10 @@ def generate_launch_description():
     gazebo_params_path = os.path.join(
                   get_package_share_directory(package_name),'config','gazebo_params.yaml')
 
+    # gazebo world파일
+    gazebo_world_path = os.path.join(
+                  get_package_share_directory(package_name),'worlds','obstacles2.world')
+    
     rsb_launch = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','ddbot_rsp.launch.py'
@@ -32,7 +36,8 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
-                    launch_arguments={'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params_path }.items()
+                    launch_arguments={'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params_path,
+                                      'world': gazebo_world_path,}.items()
             )
     
     rviz_node = Node(
